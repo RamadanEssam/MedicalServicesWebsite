@@ -1,0 +1,34 @@
+﻿@model graduationProject.ViewModels.GovDepartmentViewModel
+
+@{
+    ViewData["Title"] = "AddOrEdit";
+    Layout = null;
+}
+<div class="row" style="padding-left: 20px; margin-top:15px">
+    <div class="col-md-8">
+        <form asp-action="AddOrEdit" asp-route-id="@Model.Dept_Id" onsubmit="return jQueryAjaxPost(this);" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Dept_Id" class="form-control" />
+            <div class="form-group">
+                <label asp-for="Dept_Name" class="control-label"></label>
+                <input asp-for="Dept_Name" class="form-control" />
+                <span asp-validation-for="Dept_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Governorates" class="control-label"></label>
+                <select asp-for="Gov_Id" class="form-control" asp-items="@(new SelectList(Model.Governorates, "Gov_Id", "Gov_Name"))"></select>
+                <span asp-validation-for="Gov_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

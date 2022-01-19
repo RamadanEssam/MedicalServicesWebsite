@@ -1,0 +1,90 @@
+﻿@model graduationProject.Models.Hospital
+
+@{
+    ViewData["Title"] = "Details hospital";
+    ViewBag.hospitallist = "active";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="padding: 20px; padding-left: 60px;">
+                    <div class="header">
+                        <h1>تفاصيل </h1>
+                        <h4>عرض بيانات المستشفي</h4>
+                    </div>
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl class="row">
+                                    <dt class="col-sm-4">
+                                        @Html.DisplayNameFor(model => model.Hos_Name)
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @Html.DisplayFor(model => model.Hos_Name)
+                                    </dd>
+                                    <dt class="col-sm-4">
+                                        @Html.DisplayNameFor(model => model.Hos_Incubators)
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @Html.DisplayFor(model => model.Hos_Incubators)
+                                    </dd>
+                                    <dt class="col-sm-4">
+                                        @Html.DisplayNameFor(model => model.DayPrice)
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @Html.DisplayFor(model => model.DayPrice)
+                                    </dd>
+                                    <dt class="col-sm-4">
+                                        @Html.DisplayNameFor(model => model.Hos_Location)
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @Html.DisplayFor(model => model.Hos_Location)
+                                    </dd>
+                                    <dt class="col-sm-4">
+                                        @Html.DisplayNameFor(model => model.Hos_Phone)
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @Html.DisplayFor(model => model.Hos_Phone)
+                                    </dd>
+                                    <dt class="col-sm-4">
+                                        @Html.DisplayNameFor(model => model.dateCreate)
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @Html.DisplayFor(model => model.dateCreate)
+                                    </dd>
+                                    <dt class="col-sm-4">
+                                        @Html.DisplayNameFor(model => model.Department)
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @Html.DisplayFor(model => model.Department.Dept_Name)
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl class="row">
+                                    <dt class="col-sm-8">
+                                        @Html.DisplayNameFor(model => model.hos_pic)
+                                        @if (@Model.hos_pic != null)
+                                        {
+                                            <img style="width: 230px; height: 195px" class="img-thumbnail" src="~/images/Hospital/@Model.Hos_Image" />
+                                        }
+                                        else
+                                        {
+                                            <img style="width: 230px; height: 195px" class="img-thumbnail" src="~/images/25-258285_free-icons-png-search-user-icon-png.png" />
+                                        }
+                                    </dt>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a onclick="showInPopup('@Url.Action("AddOrEdit","Hospital",new {id=Model.Hos_Id},Context.Request.Scheme)','Edit')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i>Edit</a>
+                            <a class="btn btn-outline-primary" asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

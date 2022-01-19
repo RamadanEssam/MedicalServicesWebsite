@@ -1,0 +1,72 @@
+﻿@model IEnumerable<HospitalViewModel>
+
+@{
+    ViewData["Title"] = "Users by Hospitals";
+    ViewBag.usergrouphospital = "active";
+}
+<div class="content bg-white" style="min-height: 425px; padding: 20px; ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                @foreach (var gr in Model)
+                {
+                <h3>Hospital Name: @gr.Hos_Name</h3>
+                    <table class="table table-bordered table-hover" >
+                        <thead>
+                            <tr>
+                                <th>
+                                    First Name
+                                </th>
+                                <th>
+                                    Last Name
+                                </th>
+                                <th>
+                                    SSN
+                                </th>
+                                <th>
+                                    Phone
+                                </th>
+                                <th>
+                                    Reservation Date
+                                </th>
+                                <th>
+                                    Number Of Incubators
+                                </th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in gr.userResverations)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.FirstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.LastName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.SSN)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.PhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Res_Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Num_Incubators)
+                                </td>
+
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>

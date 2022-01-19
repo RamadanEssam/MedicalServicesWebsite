@@ -1,0 +1,174 @@
+﻿<head>
+    <!------home----->
+    <link href="~/HadanatMasr/css/Home.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+
+</head>
+<style>
+    .navbar {
+        margin-bottom: 0 !important;
+    }
+    article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+        display: block;
+    }
+    .box-shadow {
+        box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
+    }
+    .mb-3, .my-3 {
+        margin-bottom: 1rem !important;
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid #dee2e6 !important;
+    }
+
+    .bg-white {
+        background-color: #fff !important;
+    }
+    .hadanat-container-home {
+        height: 59px !important;
+    }
+
+    navbar, .mb-3, .my-3 {
+        margin-bottom: 0 !important;
+    }
+    .navbar-nav {
+        height: 45px;
+    }
+    .nav-itam .form-inline {
+        padding: 0 !important;
+    }
+    form {
+        padding: 0 !important;
+    }
+</style>
+<div class="containerhome">
+
+    <div class="hero">
+        <div class="content" style="position: relative;">
+            <div class="sliderOverlay">
+                <button id='rightBtn'>&#10094;</button>
+                <button id='leftBtn'>&#10095;</button>
+            </div>
+
+            <ul id="myslider">
+
+                <li style="position: relative;">
+                    <img src="~/HadanatMasr/images/slider1.jpg" style="position: relative" />
+                    <div style="transform: translate(-50%);     position: absolute;
+                        left: 50%;
+                        top: 30%;
+                        z-index: 9999;
+                    ">
+                        <h1>موقع <span>بنك الدم </span>يرحب بكم</h1>
+                        <a href="#" class="btn">إذهب الأن</a>
+
+                    </div>
+                </li>
+                <li style="position: relative;">
+                    <img src="~/HadanatMasr/images/slider2.jpg" style="position: relative" />
+                    <div style="transform: translate(-50%);     position: absolute;
+                        left: 50%;
+                        top: 30%;
+                        z-index: 9999;
+                    ">
+                        <h1> موقع <span>حضانات مصر </span>يرحب بكم</h1>
+                        <a asp-controller="Home" asp-action="Hadanat" class="btn">إذهب الأن</a>
+                    </div>
+                </li>
+                <li style="position: relative;">
+                    <img src="~/HadanatMasr/images/slider3.jpg" style="position: relative" />
+                    <div style="transform: translate(-50%);     position: absolute;
+                        left: 50%;
+                        top: 30%;
+                        z-index: 9999;
+                    ">
+                        <h1> موقع <span>أنابيب الأكسجين </span>يرحب بكم</h1>
+                        <a  class="btn" asp-controller="Home" asp-action="Oxygen" >إذهب الأن</a>
+                    </div>
+                </li>
+                <li style="position: relative;">
+                    <img src="~/HadanatMasr/images/background.jpg" style="position: relative" />
+                    <div style="transform: translate(-50%);     position: absolute;
+                        left: 50%;
+                        top: 30%;
+                        z-index: 9999;
+                    ">
+                        <h1> موقع<span>Care To Day</span>يرحب بكم</h1>
+                        <a href="#qualities" class="btn">إعرف أكثر عنا</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+
+
+
+    <section id="qualities">
+        <h2>ماذا نقدم لكم؟</h2>
+        <div class="qualities-container">
+
+            <div class="quality">
+                <div class="header-container">
+                    <i class="fas fa-baby-carriage"></i>
+                    <h3>حضانات الأطفال</h3>
+                </div>
+                <p>
+                    نسهل عليك إيجاد الحضانات التى سيحتاجها طفلك ونسهل عليك الوصل اليها.
+                </p>
+            </div>
+            <div class="quality">
+                <div class="header-container">
+                    <i class="fas fa-hand-holding-medical"></i>
+                    <h3>بنك الدم</h3>
+                </div>
+                <p>
+                    نسهل عليك إيجاد بنوك الدم للحصول على أكياس الدم بفصائلها المختلفة .
+                </p>
+            </div>
+            <div class="quality">
+                <div class="header-container">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>توفير أنابيب الأكسجين</h3>
+                </div>
+                <p>
+                    نسهل عليك إيجاد أنابيب الأكسجين التى قد تحتاج إليها فى حالات الكورونا أو الحالات التى تتطلب إستخدام أنابيب الأكسجين.
+                </p>
+            </div>
+        </div>
+    </section>
+    <div id='aboutus' class="about-container">
+        <section class="about-us">
+            <div class="about-content">
+                <h2>من نحن؟</h2>
+                <p>
+                    موقع إلكترونى يوفر خدمات توفير الحضانات وإيجاد بنوك الدم و توفير أنابيب الأكسجين .
+                </p>
+            </div>
+            <img src="~/HadanatMasr/images/who-are-we.jpg" alt="" />
+
+        </section>
+    </div>
+    <section id="contactus" class="contact-us">
+        <h2>تواصل معنا</h2>
+        <form>
+            <label for="name">اسمك</label>
+            <input type="text" id="name" name="name" />
+            <label for="email">بريدك الالكتروني</label>
+            <input type="email" id="email" name="email" />
+            <label for="msg">رسالتك لنا</label>
+            <textarea name="message" id="msg" cols="30" rows="5"></textarea>
+            <button class="btn" type='submit' style="min-width: 38%;">إرسال</button>
+        </form>
+    </section>
+
+</div>
+
+
+@section Scripts{
+    <script src="~/HadanatMasr/script.js"></script>
+
+}

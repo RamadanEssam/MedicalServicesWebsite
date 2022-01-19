@@ -1,0 +1,28 @@
+﻿@model GovDepartmentViewModel
+@*href="javascript:;" data-model="@Model" onsubmit="myFunction('@Model')"*@
+<form asp-action="AddOrEdit">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Dept_Name" class="control-label"></label>
+                <input asp-for="Dept_Name" class="form-control" />
+                <span asp-validation-for="Dept_Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Governorates" class="control-label"></label>
+                <select asp-for="Gov_Id" class="form-control" asp-Items="@(new SelectList(Model.Governorates, "Gov_Id", "Gov_Name"))"></select>
+                <span asp-validation-for="Gov_Id" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+

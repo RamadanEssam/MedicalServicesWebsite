@@ -1,0 +1,37 @@
+﻿@model IEnumerable<graduationProject.Models.OxygenTube>
+@foreach (var item in Model)
+{
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OxgnType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OxgnAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OxgnCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OxgnPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OxgnLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OxgnDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.Dept_Id)
+        </td>
+        <td>
+            <a onclick="showInPopup('@Url.Action("AddOrEdit","OxygenTube",new {id=item.OxgnId},Context.Request.Scheme)','Edit')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i>Edit</a>
+            <form asp-action="Delete" asp-route-id="@item.OxgnId" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                <input type="hidden" asp-for="@item.OxgnId" />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
+
+
+        </td>
+    </tr>
+    }

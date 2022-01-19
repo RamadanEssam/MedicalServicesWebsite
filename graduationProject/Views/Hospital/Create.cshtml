@@ -1,0 +1,103 @@
+﻿@model graduationProject.ViewModels.deptHospitalViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="padding: 20px; padding-left: 60px;">
+                    <div class="header">
+                        <h1>انشاء </h1>
+                        <h4>مستشفى جديده</h4>
+                    </div>
+                    <div class="content">
+                        <form asp-action="Create" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="Hos_Name" class="control-label"></label>
+                                        <input asp-for="Hos_Name" class="form-control" />
+                                        <span asp-validation-for="Hos_Name" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Hos_Location" class="control-label"></label>
+                                        <input asp-for="Hos_Location" class="form-control" />
+                                        <span asp-validation-for="Hos_Location" class="text-danger"></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="Hos_Phone" class="control-label"></label>
+                                                <input asp-for="Hos_Phone" class="form-control" />
+                                                <span asp-validation-for="Hos_Phone" class="text-danger"></span>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="Departments" class="control-label "></label>
+                                                <select asp-for="Dept_Id" class="form-control" asp-items="@(new SelectList(Model.Departments, "Dept_Id", "Dept_Name"))">
+                                                    <option value="" disabled selected>Choose your country</option>
+
+                                                </select>
+                                                <span asp-validation-for="Dept_Id" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="Hos_Incubators" class="control-label"></label>
+                                                <input asp-for="Hos_Incubators" class="form-control" />
+                                                <span asp-validation-for="Hos_Incubators" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="DayPrice" class="control-label"></label>
+                                                <input asp-for="DayPrice" class="form-control" />
+                                                <span asp-validation-for="DayPrice" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label asp-for="File" class="w-75 h-75">اختر صورة</label>
+                                        <img style="width: 230px; height: 195px"  class="img-thumbnail profile-Image" id="profileImg" alt="profile" src="~/images/25-258285_free-icons-png-search-user-icon-png.png" />
+                                        <div class="custom-file mt-2">
+                                            <input name="File" type="file"
+                                                   accept="image/*"
+                                                   asp-for="File"
+                                                   class="custom-file-input"
+                                                   onchange="document.getElementById('profileImg').src = window.URL.createObjectURL(this.files[0])" 
+                                                   />
+                                            <label class="custom-file-label" asp-for="File">اختار</label>
+                                            <span asp-validation-for="File" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Create" class="btn btn-primary" />
+                                        <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

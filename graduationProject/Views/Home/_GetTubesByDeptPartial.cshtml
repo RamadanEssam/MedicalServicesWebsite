@@ -1,0 +1,88 @@
+﻿@model IEnumerable<graduationProject.Models.OxygenTube>
+<style>
+
+    img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .contain-edit {
+        /*background-color: #e9ecef;*/
+        padding: 10px;
+    }
+
+    .h1-edit {
+        /*background-color: white;*/
+        padding-left: 30px;
+    }
+
+    .col-edit {
+        margin-bottom: 35px;
+        cursor: pointer;
+    }
+
+    .card {
+        border: none;
+    }
+
+    .body-edit {
+        border-top: 3px solid #1b6ec2;
+    }
+</style>
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="container-fluid px-4 contain-edit">
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">
+                    <h1 class="mt-4 h1-edit">انابيب الاكسجين المتاحة</h1>
+                </li>
+            </ol>
+            <div class="row">
+                @if (Model != null)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-xl-4 col-md-6 col-edit">
+                            <div class="card" style="text-align: end;">
+                                
+                                <div class="card-body body-edit">
+                                    <h5 class="card-title">@Html.DisplayNameFor(model => model.OxgnType): @item.OxgnType</h5>
+                                    <p class="card-text">@Html.DisplayNameFor(model => model.OxgnLocation): @item.OxgnLocation</p>
+                                    <p class="card-text">@Html.DisplayNameFor(model => model.OxgnDescription): @item.OxgnDescription</p>
+                                    <p class="card-text">@Html.DisplayNameFor(model => model.OxgnPhone): @item.OxgnPhone</p>
+
+                                    @if (item.OxgnAmount >= 0)
+                                    {
+                                        <p class="card-text">@Html.DisplayNameFor(model => model.OxgnAmount): @item.OxgnAmount</p>
+
+                                    }
+                                    else
+                                    {
+                                        <p class="card-text">@Html.DisplayNameFor(model => model.OxgnAmount): 0</p>
+
+                                    }
+                                    @if (item.OxgnCost != 0)
+                                    {
+                                        <p> @Html.DisplayNameFor(model => model.OxgnCost):$ @item.OxgnCost</p>
+                                    }
+                                    <p>@Html.DisplayNameFor(model => model.dateCreate): @item.dateCreate</p>
+                                    <a onclick="showInPopup('@Url.Action("UserSubmitTubes", "Home", new {id=item.OxgnId}, Context.Request.Scheme)', 'Submit')" class="btn btn-primary" id="button1">حجز</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    }
+                }
+            </div>
+
+        </div>
+    </main>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/js/site.js"></script>
+
+

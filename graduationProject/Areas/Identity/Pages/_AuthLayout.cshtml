@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .container-fluid {
+        padding: 0;
+    }
+    .card-header {
+        padding: 0;
+        overflow: hidden;
+        height: 70px;
+        border: 0;
+    }
+    .card-header-tabs {
+        display: grid;
+        grid-template-columns: auto auto;
+        text-align: center;
+        margin-left: 0;
+        height: 100%;
+    }
+    .nav-tabs .nav-link {
+        padding: 25px;
+        border: 0;
+        height: 100%;
+        border: 0;
+        background-color: #e5e5e5;
+        color: #212529;
+    }
+    .a-first {
+        border-right: 1px solid rgba(0,0,0,.125);
+    }
+    .edit-card .card {
+        border: 0;
+    }
+    .active {
+        background-color: white;
+    }
+</style>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card login-logout-tab">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item a-first">
+                        <a class="nav-link" href="/Identity/Account/Login">تسجيل الدخول</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/Identity/Account/Register">التسجيل</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-md-12 edit-card">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+<script>
+    $(function () {
+        var current = location.pathname;
+        $('.nav-tabs li a').each(function () {
+            var $this = $(this);
+            if (current.indexOf($this.attr('href')) !== -1) {
+                $this.addClass('active');
+            }
+        })
+
+    })
+</script>
+
+}

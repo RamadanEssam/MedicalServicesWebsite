@@ -1,0 +1,107 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+    ViewBag.profile = "active";
+}
+<h4>@ViewData["Title"]</h4>
+    <partial name="_StatusMessage" model="Model.StatusMessage" />
+    <form id="profile-form" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Input.FirstName"></label>
+                    <input asp-for="Input.FirstName" class="form-control" />
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.LastName"></label>
+                    <input asp-for="Input.LastName" class="form-control" />
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Username"></label>
+                    <input asp-for="Username" class="form-control" disabled />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.PhoneNumber"></label>
+                    <input asp-for="Input.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+                <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
+
+            </div>
+            <div class="col-md-6">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-img-top" >
+                        <label for="file-input" style="max-height: 180px; overflow: hidden; width: 100%;">
+                            @if (Model.Input.ProfileImg == null)
+                            {
+                                <img style="width: inherit; min-height: 100%; " class="profile-Image" id="profileImg" alt="profile" src="/images/25-258285_free-icons-png-search-user-icon-png.png" />
+
+                            }
+                            else
+                            {
+                                <img style="width: inherit; min-height: 100%; " class="profile-Image" id="profileImg" alt="profile" src="data:image/*;base64,@(Convert.ToBase64String(Model.Input.ProfileImg))" />
+                            }
+                        </label>
+                        <input id="file-input"
+                               type="file"
+                               accept="image/*"
+                               asp-for="Input.ProfileImg"
+                               class="custom-file-input"
+                               onchange="document.getElementById('profileImg').src = window.URL.createObjectURL(this.files[0])" />
+                    </div>
+                    <div class="card-body" style="padding-left:40px;">
+                        <h5 class="card-title">@Model.Input.FirstName @Model.Input.LastName<br /></h5>
+                        <p class="card-text">
+                            Email: @Model.Username<br />
+                            phone:@Model.Input.PhoneNumber   <br />
+                        </p>
+                        <br />
+                    </div>
+                    <div class="card-footer text-muted" style="text-align: center;">
+                        <div class="row" style="margin-top:-16px">
+                            <div class="col-md-3 col-md-offset-1">
+                                <h5><br /><small>Files</small></h5>
+                            </div>
+                            <div class="col-md-4">
+                                <h5><br /><small>Used</small></h5>
+                            </div>
+                            <div class="col-md-3">
+                                <h5><br /><small>Spent</small></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="form-group">
+            <label asp-for="Input.ProfileImg" class="w-100"></label>
+            @if (Model.Input.ProfileImg != null)
+            {  //to covert byte string from database to img
+                <img class="profile-Image" id="profileImg" alt="profile" src="data:image/*;base64,@(Convert.ToBase64String(Model.Input.ProfileImg))" />
+            }
+            else
+            {
+                <img class="profile-Image" id="profileImg" alt="profile" src="~/images/25-258285_free-icons-png-search-user-icon-png.png" />
+            }
+            <div class="custom-file mt-2">
+                <input type="file"
+                       accept="image/*"
+                       asp-for="Input.ProfileImg"
+                       class="custom-file-input"
+                       onchange="document.getElementById('profileImg').src = window.URL.createObjectURL(this.files[0])" />
+                <label class="custom-file-label" asp-for="Input.ProfileImg">Choose picture</label>
+                <span asp-validation-for="Input.ProfileImg" class="text-danger"></span>
+            </div>
+        </div>*@
+            </div>
+        </div>
+    </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

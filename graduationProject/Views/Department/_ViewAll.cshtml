@@ -1,0 +1,21 @@
+﻿@model IEnumerable<graduationProject.Models.Department>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dept_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Governorate.Gov_Name)
+        </td>
+        <td class="text-center">
+            <a  onclick="showInPopup('@Url.Action("AddOrEdit","Department",new {id=item.Dept_Id},Context.Request.Scheme)','Edit')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i>Edit</a>
+            <form asp-action="Delete" asp-route-id="@item.Dept_Id" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                <input type="hidden" asp-for="@item.Dept_Id" />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
+        </td>
+    </tr>
+
+}
+

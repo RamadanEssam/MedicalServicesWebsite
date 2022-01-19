@@ -1,0 +1,81 @@
+﻿@model IEnumerable<IdentityRole>
+@{
+    ViewData["Title"] = "Roles";
+    ViewBag.roles = "active";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        DataTable
+                    </div>
+                    <div class="card-body">
+                        <div class="header">
+                            <h1>Roles</h1>
+                            <!--to call partial page here-->
+                            <partial name="_RoleFormPartial" model="new RoleFormViewModel()" />
+                        </div>
+                        <table id="datatablesSimple" class="table table-striped mt-4">
+                            <thead>
+                                <tr class="bg-primary text-white">
+                                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tfoot></tfoot>
+                            <tbody id="view-all">
+                                @Html.Partial("_ViewAllRole", Model)
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('.js-delete').on('click', function () {
+                var btn = $(this);
+                bootbox.confirm({
+                    message: "This is a confirm with custom button text and color! Do you like it?",
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-danger'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-secondary'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: '/api/Roles/?roleId=' + btn.data('id'),
+                                method: 'DELETE',
+                                success: function () {
+                                    btn.parents('tr').fadeOut();
+                                    $('#alert').removeClass('d-none');
+                                    setTimeout(function () { $('#alert').addClass('d-none'); }, 3000);
+                                },
+                                error: function () {
+                                    alert('some this went wrong');
+                                },
+                            });
+                        }
+
+
+                    }
+                });
+            });
+        });
+    </script>
+}

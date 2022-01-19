@@ -1,0 +1,86 @@
+﻿@model graduationProject.Models.Hospital
+<style>
+
+    img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .contain-edit {
+        /*background-color: #e9ecef;*/
+        padding: 10px;
+    }
+
+    .h1-edit {
+        /*background-color: white;*/
+        padding-left: 30px;
+    }
+
+    .col-edit {
+        margin-bottom: 35px;
+        cursor: pointer;
+    }
+
+    .card {
+        border: none;
+    }
+
+    .body-edit {
+        border-top: 3px solid #1b6ec2;
+    }
+</style>
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="container-fluid px-4 contain-edit">
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">
+                    <h1 class="mt-4 h1-edit">المستشفيات المتاحة</h1>
+                </li>
+            </ol>
+            <div class="row">
+               
+                        <div class="col-xl-4 col-md-6 col-edit">
+                            <div class="card" style="text-align: end;">
+                                @if (Model.hos_pic == null)
+                                {
+                                    <img src="~/images/25-258285_free-icons-png-search-user-icon-png.png" />
+
+                                }
+                                else
+                                {
+                                    <img src="data:image/*;base64,@(Convert.ToBase64String(Model.hos_pic))" />
+                                }
+                                <div class="card-body body-edit">
+                                    <h5 class="card-title">@Html.DisplayNameFor(model => model.Hos_Name): @Model.Hos_Name</h5>
+                                    <p class="card-text">@Html.DisplayNameFor(model => model.Hos_Location): @Model.Hos_Location</p>
+                                    <p class="card-text">@Html.DisplayNameFor(model => model.Hos_Phone): @Model.Hos_Phone</p>
+                                    @if (Model.Hos_Incubators >= 0)
+                                    {
+                                        <p class="card-text">@Html.DisplayNameFor(model => model.Hos_Incubators): @Model.Hos_Incubators</p>
+
+                                    }
+                                    else
+                                    {
+                                        <p class="card-text">@Html.DisplayNameFor(model => model.Hos_Incubators): 0</p>
+
+                                    }
+                                    @if (Model.DayPrice != 0)
+                                    {
+                                        <p> @Html.DisplayNameFor(model => model.DayPrice):$ @Model.DayPrice</p>
+                                    }
+                                    <p>@Html.DisplayNameFor(model => model.dateCreate): @Model.dateCreate</p>
+                                    <a onclick="showInPopup('@Url.Action("UserSubmitReservation", "Home", new {id=Model.Hos_Id}, Context.Request.Scheme)', 'Submit')" class="btn btn-primary" id="button1">حجز</a>
+
+                                </div>
+                            </div>
+                        </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/js/site.js"></script>
+
+

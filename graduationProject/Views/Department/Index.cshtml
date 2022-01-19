@@ -1,0 +1,105 @@
+﻿@model IEnumerable<graduationProject.Models.Department>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewBag.department = "active";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        DataTable Example
+                    </div>
+                    <div class="card-body">
+                        <div class="text-end create-edit">
+                            <a onclick="showInPopup('@Url.Action("AddOrEdit", "Department", null, Context.Request.Scheme)', 'Create New')" class="btn btn-primary" id="button1"><i class="far fa-plus-square"></i>Create New</a>
+                            <div id="div1">
+
+                            </div>
+                        </div>
+                        <table id="datatablesSimple" class="table table-striped mt-4">
+                            <thead>
+                                <tr class="bg-primary text-white">
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Dept_Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Governorate.Gov_Name)
+                                    </th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+
+                            </tfoot>
+                            <tbody id="view-all">
+                                @Html.Partial("_ViewAll", Model)
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+}
+@*@section Scripts {
+        <script>
+            //function myFunction(e) {
+
+
+            //    $.ajax({
+            //        url: '/Department/Create/' + e,
+            //        method: 'POST',
+            //        success: function () {
+            //            alert('Done');
+            //        },
+            //        error: function () {
+            //            alert('some this went wrong');
+            //        },
+            //    });
+
+            //};
+            $(document).ready(function () {
+
+
+                //$("#button1").click(function () {
+                //    $("#div1").load("/Department/GetPartial");
+                //});
+                //$("#datasend").click(function () {
+                //    var btn = $(this);
+                //    $.ajax({
+                //        url: '/Department/Create/' + btn.data('model'),
+                //        type: 'POST',
+                //        success: function (response) {
+                //            $("#datacome").html(response)
+                //        },
+                //        error: function () {
+                //            alert('some this went wrong');
+                //        },
+                //    });
+                //});
+                //$.ajax({
+                //    url: '/Department/GetPartial',
+                //    type: 'Get',
+                //    success: function (response) {
+                //        $("#div1").html(response)
+                //    },
+                //    error: function () {
+                //        alert('some this went wrong');
+                //    },
+                //});
+
+            });
+        </script>
+
+    }*@

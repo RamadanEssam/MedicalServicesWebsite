@@ -1,0 +1,245 @@
+﻿@model SelectList
+@{
+    ViewData["Title"] = "حضانات مصر";
+    ViewBag.dashboard = "active";
+}
+
+<head>
+
+    <title>حضانات مصر</title>
+    <!-- Main Template CSS File -->
+    <link rel="stylesheet" href="~/HadanatMasr/css/css.css" />
+    <!-- Render All Elements Normally -->
+    <link rel="stylesheet" href="~/HadanatMasr/css/normalize.css" />
+    <!-- Font Awesome Library -->
+    <link rel="stylesheet" href="~/HadanatMasr/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa&family=Vibes&display=swap" rel="stylesheet">
+    <style>
+        .select-label {
+            line-height: 2;
+            margin-left: 9px;
+        }
+
+        .search1 {
+            margin-bottom: 15px;
+        }
+
+        select {
+            max-width: 75%;
+        }
+
+        .search-edit {
+            margin-right: 13%;
+        }
+
+        #HospitalTitle {
+            width: 47%;
+            padding: 9px;
+            border-radius: 0;
+        }
+
+            #HospitalTitle:hover {
+                background-color: white;
+                color: black;
+            }
+
+        .btn-edit {
+            border-radius: 0;
+        }
+
+        .footer {
+            padding: 10px 10px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+
+<!-- Start Header -->
+<div class="header" style="padding:10px;">
+    <div class="container">
+        <div class="intro-text" style="width:100%;">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group search1">
+                                <label class="select-label">المحافظة</label>
+                                @Html.DropDownList("Gov_Id", Model, new { @class = "drop form-control text-center text" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group search1">
+                                <label class="select-label" style="margin-left: 24px">المدينة  </label>
+                                <select id="departoxg" class="drop form-control text-center text-break"></select>    @*//load partail vew for city*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <form asp-controller="Home" asp-action="Index">
+                        <div class="input-group mb-3 search-edit">
+                            <input type="text" id="HospitalTitle1" name="HospitalTitle1" class="btn btn-outline-primary" placeholder="Enter your keyword" aria-describedby="basic-addon1" />
+                            <div class="input-group-append">
+                                <button class="btn btn-primary btn-edit" type="submit">البحث عن مستشفي</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- End Header -->
+<div id="bodyContentoxg">
+    <!-- Start Landing Section -->
+    <div class="landingoxg">
+
+    </div>
+    <!-- Start Services -->
+    <div class="services" id="services">
+        <div class="container">
+            <h2 class="special-heading">معلومات تهمك</h2>
+            <div class="services-content">
+                <div class="col">
+                    <!-- Start Service -->
+                    <div class="srv">
+                        <i class="fas fa-thumbtack"></i>
+                        <div class="text">
+                            <h3>توصيل أنبوبة الأكسجين</h3>
+                            <p>
+                                - يتم توصيل المنظم بالأسطوانة <br> - يتم استخدام مفك الأسطوانة المصاحب لها فقط <br> - التأكد من ان نظام الصمامات يخلوا من أى مخلفات او زيوت
+                            </p>
+                        </div>
+                    </div>
+                    <div class="srv">
+                        <i class="fas fa-thumbtack"></i>
+                        <div class="text">
+                            <h3>تركيب أنبوبة الأكسجين</h3>
+                            <p>
+                                - يتم توصيل المنظم بالاسطوانة الممتلئة <br> - يتم التوفيق بين المسامير الخاصة بالمنظم والثقوب الموجودة <br>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End Service -->
+                </div>
+                <div class="col">
+                    <!-- Start Services -->
+                    <div class="srv">
+                        <i class="fas fa-thumbtack"></i>
+                        <div class="text">
+                            <h3>نصائح تركيب أنبوبة أكسجين</h3>
+                            <p>
+                                - التأكد من ان نظام الصمامات خالى من أى زيوت او مخلفات <br> - لا يجب استخدام المنظم الذى يفتقر للوردة <br> - اذا كانت حلقة الربط غير موجودة يجب التواصل مع البائع لتوفيره
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End Services -->
+                </div>
+                <div class="col">
+                    <div class="image image-column">
+                        <img src="~/HadanatMasr/images/oxi.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Services -->
+    <!-- Start Portfolio -->
+    <div class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="special-heading">الجهود لمكافحة الوباء</h2>
+            <div class="portfolio-content">
+                <div class="card">
+                    <img src="~/HadanatMasr/images/5.jpg" alt="" />
+                    <div class="info">
+                        <p>
+                            هيئة السكك الحديدية تواصل اتخاذ كافة الإجراءات الاحترازية اللازمة لمواجهة فيروس كورونا حيث تواصل أعمال تطهير كافة القطارات بشكل دوري ومستمر
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="~/HadanatMasr/images/4.jpg" alt="" />
+                    <div class="info">
+                        <p>
+                            شركة الاتحاد العربي للنقل البري إحدى شركات وزراة النقل تواصل جهودها لتطهير كافة الاتوبيسات وتطهير شبابيك التذاكر ضمن الاجراءات الاحترازية
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="https://www.care.gov.eg/EgyptCare/News/Browse.aspx?cid=30" class="anchor">
+                        <img src="~/HadanatMasr/images/angle-double-left-solid.svg" class="left-arrow">
+                        <div class="info">
+                            <p>
+                                تعرف على المزيد من الجهودات
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- End Portfolio -->
+    <!-- End About -->
+    <!-- Start Contact -->
+    <div class="contact" id="contact">
+        <div class="container">
+            <h2 class="special-heading">التواصل مـــعنا</h2>
+            <div class="info">
+                <p class="label"> يمكنكم التواصل عبر الهاتف الخاص بنا وكذلك الإيميل التالى وعبر صفحاتنا على مواقع التواصل الإجتماعى المختلفه</p>
+                <a href="mailto:care2day@mail.com?subject=Contact" class="link">care2day@mail.com</a>
+                <hr>
+                <i class="fas fa-phone-volume"><span>         </span>01091645763 - 01554327255</i>
+                <div class="social">
+                    <a href="https://www.facebook.com/" target="_blanck"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/" target="_blanck"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.twitter.com/" target="_blanck"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Contact -->
+</div>
+
+
+
+@section Scripts{
+
+    <script>
+
+        
+        $("#Gov_Id").on("change", function () {
+            let id = $("#Gov_Id").val();
+            $("#departoxg").load("/Home/getDepartment/" + id)
+        });
+
+        $("#departoxg").on("change", function () {
+            let id = $("#departoxg").val();
+            $("#bodyContentoxg").load("/Home/GettubesbyDept/" + id)
+        });
+
+
+    </script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+}

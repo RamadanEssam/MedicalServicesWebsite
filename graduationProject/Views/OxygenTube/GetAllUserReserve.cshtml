@@ -1,0 +1,80 @@
+﻿@model IEnumerable<graduationProject.Models.UserReservationOxegin>
+
+@{
+    ViewData["Title"] = "GetAllUserReserve";
+    ViewBag.usersreservetubes = "active";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        DataTable
+                    </div>
+                    <div class="card-body">
+                        <div class="header">
+                            <h1>User Reservation</h1>
+                        </div>
+                        <table id="datatablesSimple" class="table table-striped mt-4">
+                            <thead>
+                                <tr class="bg-primary text-white">
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.User.FirstName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.User.LastName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OxygenTube.OxgnType)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Res_Date)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Num_tubes)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tfoot></tfoot>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.User.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.User.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OxygenTube.OxgnType)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Res_Date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Num_tubes)
+                                        </td>
+                                        <td>
+
+                                            <a href="javascript:;" class="btn btn-danger js-delete" data-id="@item.Id"><i class="far fa-trash-alt"></i>Cancel Reservation</a>
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}

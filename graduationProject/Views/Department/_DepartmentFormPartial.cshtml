@@ -1,0 +1,18 @@
+﻿@*@model IEnumerable<graduationProject.Models.Department>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dept_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Governorate.Gov_Name)
+        </td>
+        <td class="text-center">
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Dept_Id">Edit</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Dept_Id">Delete</a>
+        </td>
+    </tr>
+
+}*@

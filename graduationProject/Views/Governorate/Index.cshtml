@@ -1,0 +1,53 @@
+﻿@model IEnumerable<graduationProject.Models.Governorate>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewBag.governorate = "active";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        DataTable Example
+                    </div>
+                    <div class="card-body">
+                        <div class="create-edit text-end">
+                            <a onclick="showInPopup('@Url.Action("AddOrEdit", "Governorate", null, Context.Request.Scheme)', 'Create New')" class="btn btn-primary" id="button1"><i class="far fa-plus-square"></i>Create New</a>
+                        </div>
+
+                        <table id="datatablesSimple" class="table table-striped mt-4">
+                            <thead>
+                                <tr class="bg-primary text-white">
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Gov_Name)
+                                    </th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr class="bg-primary text-white">
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Gov_Name)
+                                    </th>
+                                    <th>Actions</th>
+                                </tr>
+                            </tfoot>
+                            <tbody id="view-all">
+                                @Html.Partial("_ViewAllGov", Model)
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    
+}

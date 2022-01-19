@@ -1,0 +1,73 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "تسجيل الدخول";
+    Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
+
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="padding: 20px; padding-left: 60px;">
+                    <div class="header">
+                        <h1>@ViewData["Title"]</h1>
+                    </div>
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <section>
+                                    <form id="account" method="post">
+                                        <h4>تسجيل الدخول الى حسابك الحالي </h4>
+                                        <hr />
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <label asp-for="Input.Email"></label>
+                                            <input asp-for="Input.Email" class="form-control" />
+                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Input.Password"></label>
+                                            <input asp-for="Input.Password" class="form-control" />
+                                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label asp-for="Input.RememberMe">
+                                                    <input asp-for="Input.RememberMe" />
+                                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
+                                        </div>
+                                        <div class="form-group">
+                                            <p>
+                                                <a id="forgot-password" asp-page="./ForgotPassword">هل نسيت كلمه السر?</a>
+                                            </p>
+                                            <p>
+                                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">انشاء حساب جديد</a>
+                                            </p>
+                                            
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

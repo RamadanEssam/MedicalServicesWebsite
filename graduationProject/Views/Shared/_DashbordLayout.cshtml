@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>@ViewData["Title"] - graduationProject</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/dashboard/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <!------fonts------->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa&family=Vibes&display=swap" rel="stylesheet">
+    <style>
+        main {
+            padding: 15px;
+            padding-top: 50px;
+        }
+        body {
+            background-color: #f4f3ef;
+        }
+    </style>
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="index.html">Care To Day</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            
+        </form>
+        <partial name="_LoginAdminPartial" />
+        
+        <!-- Navbar-->
+
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Manage</div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                                <a class="nav-link @ViewBag.dashboard" asp-action="Dashboard" asp-controller="Home">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Dashboard
+                                </a>
+                                <a class="nav-link @ViewBag.profile" asp-area="Identity" asp-page="/Account/Manage/Index">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Profile
+                                </a>
+                                <a class="nav-link @ViewBag.user" asp-action="Index" asp-controller="Users">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Users
+                                </a>
+                                <a class="nav-link @ViewBag.roles" asp-action="Index" asp-controller="Roles">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Roles
+                                </a>
+                                <a class="nav-link @ViewBag.governorate" asp-action="Index" asp-controller="Governorate">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    governorate
+                                </a>
+                                <a class="nav-link @ViewBag.department" asp-action="Index" asp-controller="Department">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    department
+                                </a>
+                                <a class="nav-link @ViewBag.hospitallist" asp-action="Index" asp-controller="Hospital">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Hospitals List
+                                </a>
+
+                                <a class="nav-link @ViewBag.usersreserve" asp-action="GetAllUserReserve" asp-controller="Hospital">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    All User Reservation
+                                </a>
+
+                                <a class="nav-link @ViewBag.usergrouphospital" asp-action="GetUserGroupByHospital" asp-controller="Hospital">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Hospitals Reservation
+                                </a>
+
+                                <a class="nav-link @ViewBag.Oxeginlist" asp-action="Index" asp-controller="OxygenTube">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Oxygen tubes
+                                </a>
+                                <a class="nav-link @ViewBag.usersreservetubes" asp-action="GetAllUserReserve" asp-controller="OxygenTube">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    All User Reservation
+                                </a>
+                                <a class="nav-link @ViewBag.usergrouptubes" asp-action="GetUserGroupByTube" asp-controller="OxygenTube">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    oxygen Reservation
+                                </a>
+                            }
+                            <!------- for hospital admin-------->
+                            if (User.IsInRole("HospitalAdmin"))
+                            {
+                                <a class="nav-link @ViewBag.dashboard" asp-action="Index" asp-controller="Home">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Dashboard
+                                </a>
+                                <a class="nav-link @ViewBag.profile" asp-area="Identity" asp-page="/Account/Manage/Index">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Profile
+                                </a>
+                                <a class="nav-link @ViewBag.hospitalbypulisher" asp-action="GetHospitalByPublisher" asp-controller="Hospital">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Hospital
+                                </a>
+
+                                <a class="nav-link @ViewBag.UserByHospital" asp-action="GetUserByHospital" asp-controller="Hospital">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Hospital Reservation
+                                </a>
+                            }
+                            <!------- for oxegin admin-------->
+                            if (User.IsInRole("OxginAdmin"))
+                            {
+                                <a class="nav-link @ViewBag.dashboard" asp-action="Index" asp-controller="Home">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Dashboard
+                                </a>
+                                <a class="nav-link @ViewBag.profile" asp-area="Identity" asp-page="/Account/Manage/Index">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Profile
+                                </a>
+                                <a class="nav-link @ViewBag.tubebypulisher" asp-action="GetTubeByPublisher" asp-controller="OxygenTube">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Oxgin Tubes
+                                </a>
+
+                                <a class="nav-link @ViewBag.UserBytube" asp-action="GetUserByTube" asp-controller="OxygenTube">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Oxgin Reservation
+                                </a>
+                            }
+                        }
+
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                @RenderBody()
+            </main>
+            <!-- Modal -->
+            <div class="modal fade" id="form-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" @*style="margin-top:15%"*@>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                            <button type="button" class="btn-close bt" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary bt" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="loaderbody" id="loaderbody">
+                <div class="loader"></div>
+            </div>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>*@
+    <!--هنا عشان الجافا اسكريب والفانكشن بتاع الموقع نفسه-->
+    <script src="/dashboard/js/scripts.js"></script>
+    <!--دول عشان الاشكال-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="~/dashboard/assets/demo/chart-area-demo.js"></script>
+    <script src="~/dashboard/assets/demo/chart-bar-demo.js"></script>
+    <!--دول عشان الجداول بي الاكشن والسيرش بتاعهم-->
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="~/dashboard/js/datatables-simple-demo.js"></script>
+    <script src="~/lib/bootbox.js/bootbox.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/notify.min.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

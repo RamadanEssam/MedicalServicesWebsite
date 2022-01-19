@@ -1,0 +1,75 @@
+﻿@model IEnumerable<graduationProject.Models.Hospital>
+
+@{
+    ViewData["Title"] = "getAllHospitals";
+
+}
+<style>
+    
+    img {
+        width: 100%;
+        height: 200px;
+    }
+    .contain-edit {
+        /*background-color: #e9ecef;*/
+        padding: 10px;
+    }
+    .h1-edit {
+        /*background-color: white;*/
+        padding-left: 30px;
+    }
+    .col-edit {
+        margin-bottom: 35px;
+        cursor: pointer;
+    }
+    .card {
+        border: none;
+    }
+    .body-edit {
+        border-top: 3px solid #1b6ec2;
+    }
+</style>
+<div class="container-fluid px-4 contain-edit">
+    <h1 class="mt-4 h1-edit">Hospitals</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Hospitals</li>
+    </ol>
+    <div class="row">
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-4 col-md-6 col-edit">
+                    <div class="card" style="text-align: end;">
+                        @if (item.hos_pic == null)
+                        {
+                            <img src="~/images/25-258285_free-icons-png-search-user-icon-png.png" />
+
+                        }
+                        else
+                        {
+                            <img src="data:image/*;base64,@(Convert.ToBase64String(item.hos_pic))" />
+                        }
+                        <div class="card-body body-edit">
+                            <h5 class="card-title">@Html.DisplayNameFor(model => model.Hos_Name): @item.Hos_Name</h5>
+                            <p class="card-text">@Html.DisplayNameFor(model => model.Hos_Location): @item.Hos_Location</p>
+                            <p class="card-text">@Html.DisplayNameFor(model => model.Hos_Phone): @item.Hos_Phone</p>
+                            <p class="card-text">@Html.DisplayNameFor(model => model.Hos_Incubators): @item.Hos_Incubators</p>
+                            @if (item.DayPrice != 0)
+                            {
+                                <p> @Html.DisplayNameFor(model => model.DayPrice):$ @item.DayPrice</p>
+                            }
+                            <p>@Html.DisplayNameFor(model => model.dateCreate): @item.dateCreate</p>
+                            <a onclick="showInPopup('@Url.Action("UserSubmitReservation", "Home", new {id=item.Hos_Id}, Context.Request.Scheme)', 'Submit')" class="btn btn-primary" id="button1">حجز</a>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            }
+        }
+    </div>
+
+</div>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<graduationProject.Models.OxygenTube>
+@{
+    ViewData["Title"] = "Oxegin Tubes";
+    ViewBag.Oxeginlist = "active";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        DataTable Example
+                    </div>
+                    <div class="card-body">
+                        <div class="create-edit text-end">
+                            <a onclick="showInPopup('@Url.Action("AddOrEdit", "OxygenTube", null, Context.Request.Scheme)', 'Create New')" class="btn btn-primary" id="button1"><i class="far fa-plus-square"></i>Create New</a>
+                        </div>
+                        <div class="alert alert-success alert-dismissible fade show mt-4 d-none" id="alert" role="alert">
+                            <strong>Success</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <table id="datatablesSimple" class="table table-striped mt-4">
+                            <thead>
+                                <tr class="bg-primary text-white">
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OxgnType)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OxgnAmount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OxgnCost)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OxgnPhone)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OxgnLocation)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OxgnDescription)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Department)
+                                    </th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+
+                            </tfoot>
+                            <tbody id="view-all">
+                                @Html.Partial("_ViewAllTubes", Model)
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+}

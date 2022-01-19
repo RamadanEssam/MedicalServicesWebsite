@@ -1,0 +1,127 @@
+﻿@model IEnumerable<graduationProject.Models.UserReservationOxegin>
+
+@{
+    ViewData["Title"] = "GetUserByTubes";
+    ViewBag.UserBytube = "active";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        DataTable
+                    </div>
+                    <div class="card-body">
+                        <div class="header">
+                            <h1>User Reservation</h1>
+                        </div>
+                        <table id="datatablesSimple" class="table table-striped mt-4">
+                            <thead>
+                                <tr class="bg-primary text-white">
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.User.FirstName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.User.LastName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OxygenTube)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.User.SSN)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.User.PhoneNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Res_Date)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Num_tubes)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tfoot></tfoot>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.User.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.User.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OxygenTube.OxgnType)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.User.SSN)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.User.PhoneNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Res_Date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Num_tubes)
+                                        </td>
+                                        <td>
+                                            <a href="javascript:;" class="btn btn-danger js-delete" data-id="@item.Id"><i class="far fa-trash-alt"></i>Cancel Reservation</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('.js-delete').on('click', function () {
+                var btn = $(this);
+                bootbox.confirm({
+                    message: "This is a confirm with custom button text and color! Do you like it?",
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-danger'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-secondary'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: '/api/UserreservationTube/?Id=' + btn.data('id'),
+                                method: 'DELETE',
+                                success: function () {
+                                    btn.parents('tr').fadeOut();
+                                    $('#alert').removeClass('d-none');
+                                    setTimeout(function () { $('#alert').addClass('d-none'); }, 3000);
+                                },
+                                error: function () {
+                                    alert('some this went wrong');
+                                },
+                            });
+                        }
+
+
+                    }
+                });
+            });
+        });
+    </script>
+}

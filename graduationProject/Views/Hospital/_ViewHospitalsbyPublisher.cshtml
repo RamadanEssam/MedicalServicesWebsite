@@ -1,0 +1,43 @@
+﻿@model IEnumerable<graduationProject.Models.Hospital>
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Hos_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Department.Dept_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Hos_Location)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Hos_Phone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Hos_Incubators)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DayPrice)
+    </td>
+
+    <td>
+        @if (item.hos_pic != null)
+        {
+            <img src="data:image/*;base64,@(Convert.ToBase64String(item.hos_pic))" style="width:64px;" class="img-thumbnail" />
+        }
+
+    </td>
+
+    <td>
+        <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Hos_Id">Details</a>
+        <a onclick="showInPopup('@Url.Action("AddOrEditbyPublisher","Hospital",new {id=item.Hos_Id},Context.Request.Scheme)','Edit')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i>Edit</a>
+        <form asp-action="DeletebyPublisher" asp-route-id="@item.Hos_Id" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+            <input type="hidden" asp-for="@item.Hos_Id" />
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </form>
+
+
+    </td>
+</tr>
+}

@@ -1,0 +1,40 @@
+﻿@model graduationProject.ViewModels.ReservationFormViewModel
+
+@{
+    ViewData["Title"] = "حجز الحضانات";
+    Layout = null;
+}
+<h4>قم بحجز عدد الحضانات</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="UserSubmitReservation" asp-route-id="@Model.Hos_Id" onsubmit="return jQueryAjaxPost(this);" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Hos_Id" />
+            <input type="hidden" asp-for="SSN" />
+            <div class="form-group">
+                <label asp-for="Hos_Incubators" class="control-label"></label>
+                <input asp-for="Hos_Incubators" class="form-control" />
+                <span asp-validation-for="Hos_Incubators" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SSN" class="control-label"></label>
+                @if (Model.SSN == null)
+                {
+                    <input asp-for="SSN" class="form-control" />
+                }
+                else
+                {
+                    <input asp-for="SSN" class="form-control" disabled/>
+                }
+                <span asp-validation-for="SSN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

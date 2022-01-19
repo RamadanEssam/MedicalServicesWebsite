@@ -1,0 +1,287 @@
+﻿@model SelectList
+@{
+    ViewData["Title"] = "حضانات مصر";
+    ViewBag.dashboard = "active";
+}
+
+<head>
+
+    <title>حضانات مصر</title>
+    <!-- Main Template CSS File -->
+    <link rel="stylesheet" href="~/HadanatMasr/css/css.css" />
+    <!-- Render All Elements Normally -->
+    <link rel="stylesheet" href="~/HadanatMasr/css/normalize.css" />
+    <!-- Font Awesome Library -->
+    <link rel="stylesheet" href="~/HadanatMasr/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa&family=Vibes&display=swap" rel="stylesheet">
+    <style>
+        .select-label {
+            line-height: 2;
+            margin-left: 9px;
+        }
+
+        .search1 {
+            margin-bottom: 15px;
+        }
+
+        select {
+            max-width: 75%;
+        }
+
+        .search-edit {
+            margin-right: 13%;
+        }
+
+        #HospitalTitle {
+            width: 47%;
+            padding: 9px;
+            border-radius: 0;
+        }
+
+            #HospitalTitle:hover {
+                background-color: white;
+                color: black;
+            }
+
+        .btn-edit {
+            border-radius: 0;
+        }
+
+        .footer {
+            padding: 10px 10px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+
+<!-- Start Header -->
+<div class="header" style="padding:10px;">
+    <div class="container">
+        <div class="intro-text" style="width:100%;">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group search1">
+                                <label class="select-label">المحافظة</label>
+                                @Html.DropDownList("Gov_Id", Model, new { @class = "drop form-control text-center text" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group search1">
+                                <label class="select-label" style="margin-left: 24px">المدينة  </label>
+                                <select id="depart" class="drop form-control text-center text-break"></select>    @*//load partail vew for city*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <form asp-controller="Home" asp-action="Index">
+                        <div class="input-group mb-3 search-edit">
+                            <input type="text" id="HospitalTitle" name="HospitalTitle" class="btn btn-outline-primary" placeholder="Enter your keyword" aria-describedby="basic-addon1" />
+                            <div class="input-group-append">
+                                <button id="search" class="btn btn-primary btn-edit" type="submit">البحث عن مستشفي</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- End Header -->
+<div id="bodyContent">
+    <!-- Start Landing Section -->
+    <div class="landing">
+
+    </div>
+    <!-- End Landing Section -->
+    <!-- Start Services -->
+    <div class="services" id="services">
+        <div class="container">
+            <h2 class="special-heading">الخـــــدمات الخاصة بنا</h2>
+            <p>موجودون لخدمتكم</p>
+            <div class="services-content">
+                <div class="col">
+                    <!-- Start Service -->
+                    <div class="srv">
+                        <i class="fas fa-baby"></i>
+                        <div class="text">
+                            <h3>رعاية الطفل</h3>
+                            <p>
+                                نرعى طفلك منذ ولادته حتى خروجه بإذن الله سالما إلى بيتك فلا تخاف فإنه فى رعاية الله أولا ورعايتنا ثانيا .
+                            </p>
+                        </div>
+                    </div>
+                    <div class="srv">
+                        <i class="fas fa-hands-helping"></i>
+                        <div class="text">
+                            <h3>تقديم دليل الحضانات</h3>
+                            <p>
+                                نسهل عليك إيجاد الحضانه التى يحتاجها طفلك فى أى وقت تحتاج إلينا فيه .
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End Service -->
+                </div>
+                <div class="col">
+                    <!-- Start Services -->
+                    <div class="srv">
+                        <i class="fas fa-question"></i>
+                        <div class="text">
+                            <h3>معلومات تهمك </h3>
+                            <p>
+                                نسهل عليك إيجاد المعلومات التى تحتاج لمعرفتها .
+                            </p>
+                        </div>
+                    </div>
+                    <div class="srv">
+                        <i class="fas fa-phone"></i>
+                        <div class="text">
+                            <h3>التواصل معنا </h3>
+                            <p>
+                                يمكنك التواصل معنا فى أى وقت تحتاج إلينا فيه عبر الهاتف الخاص بنا وكما يمكنك مراسلتنا من خلال البريد الإلكترونى ومواقع التواصل الإجتماعى المختلفة .
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End Services -->
+                </div>
+                <div class="col">
+                    <div class="image image-column">
+                        <img src="~/HadanatMasr/images/services.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Services -->
+    <!-- Start Portfolio -->
+    <div class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="special-heading">معلومــــات تهمك</h2>
+            <p>المختصر المفيد</p>
+            <div class="portfolio-content">
+                <div class="card">
+                    <img src="~/HadanatMasr/images/portfolio-1.jpg" alt="" />
+                    <div class="info">
+                        <h3>يعنى ايه حضانه</h3>
+                        <p>
+                            الحضّانة هي الرحم الخارجي، فهي المكان البديل والقريب من رحم الأم، حيث تتوافر فيه التدفئة والتغذية المناسبة والأكسجين اللازم، وتمكن الأطباء من ملاحظة الأطفال ومتابعة حالتهم بشكل جيد، كما إنها مزودة بالأجهزة التي تتابع العلامات الحيوية للطفل على مدار 24
+                            ساعة.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="~/HadanatMasr/images/portfolio-2.jpg" alt="" />
+                    <div class="info">
+                        <h3>متى نستخدم الحضانات</h3>
+                        <p>
+                            ـ الأطفال المبتسرون «الخدج»، الذين يولدون قبل الميعاد وتتراوح أعمارهم عادة بين 37 أسبوعاً فأقل. ـ الذي يكون وزنه أقل من 2.5 كيلوغرام وغالباً ما يكون لضعف رئتيه، فهو أكثر عرضة للإصابة بالأمراض الصدريَّة؛ لأنَّ الرئتين لم تصلا إلى حجمهما الطبيعي. ـ الذي
+                            يعاني من صعوبة في التنفس نتيجة لعدم تمدُّد الحويصلات الهوائيَّة لديه. ـ الذي يعاني من ارتفاع في نسبة الصفراء أو يحتاج لعلاج ضوئي ولعمل تحاليل لمعرفة سبب هذا الارتفاع. ـ الذي يعاني من مشكلة في الرضاعة وهو ما يمثل خطراً على حياته
+                            وصحته. ـ الذي يزيد وزنه عن 4.5 كيلوغرام. ـ الذي يولد لأُم تعاني من السكر أثناء فترة الحمل، إذ يجب متابعتهم وإدخالهم الحضانة للاطمئنان على مستوى السكر في أجسامهم بعد ولادتهم.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="~/HadanatMasr/images/portfolio-3.jpg" alt="" />
+                    <div class="info">
+                        <h3>المدة التى يحتاجها الطفل للحضانه</h3>
+                        <p>
+                            من الصعب التنبؤ بمدة بقاء الطفل في الحضانة، إذ يعتمد ذلك على العديد من العوامل، والقاعدة العامة هي أنه إذا كانت حالة الطفل مستقرة ولا يحتاج إلى أكسجين، ويأكل عن طريق الفم لمدة 48 ساعة، يمكن عودته إلى المنزل مع المتابعة الدقيقة.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Portfolio -->
+    <!-- Start About -->
+    <div class="about" id="aboutus">
+        <div class="container">
+            <h2 class="special-heading">من نـــحــن</h2>
+            <div class="about-content">
+                <div class="image">
+                    <img src="~/HadanatMasr/images/about.jpg" alt="" />
+                </div>
+                <div class="text">
+                    <p>
+                        موقع إلكترونى يقدم لحضراتكم خدمات لرعاية الأطفال التى تحتاج لحضانات , نسهل عليكم إيجاد الحضانات التى تناسبكم طبقا للمحافظة التى تبحثون عنها وكذلك المنطقه التى تتواجد بها الحضانه , يتم عرض تفاصيل كل حضانه ومن ثم يمكنكم التواصل بالحضانه التى ترغبون فى التواصل
+                        معها , كما يمكنكم التواصل معنا اذا واجهكم أى مشكله .
+                    </p>
+                    <hr />
+                    <p>
+                        موجودون هنا لخدمتكم ومد يد العون للجميع دمتم وأطفالكم بخير
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End About -->
+    <!-- Start Contact -->
+    <div class="contact" id="contactus">
+        <div class="container">
+            <h2 class="special-heading">التواصل مـــعنا</h2>
+            <p>لاتتردد فى التواصل معنا فى أى وقت </p>
+            <div class="info">
+                <p class="label"> يمكنكم التواصل عبر الهاتف الخاص بنا وكذلك الإيميل التالى وعبر صفحاتنا على مواقع التواصل الإجتماعى المختلفه</p>
+                <a href="mailto:hadanatMasr@mail.com?subject=Contact" class="link">hadanatMasr@mail.com</a>
+                <hr>
+                <i class="fas fa-phone-volume"><span>         </span>01091645763 - 01554327255</i>
+                <div class="social">
+                    <a href="https://www.facebook.com/" target="_blanck"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/" target="_blanck"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.twitter.com/" target="_blanck"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+@section Scripts{
+
+    <script>
+
+        $(document).ready(function () {
+            $("#HospitalTitle").autocomplete({
+                source: 'api/HospitalApi/search'
+            });
+        });
+        $("#Gov_Id").on("change", function () {
+            let id = $("#Gov_Id").val();
+            $("#depart").load("/Home/getDepartment/" + id)
+        });
+
+        $("#depart").on("change", function () {
+            let id = $("#depart").val();
+            $("#bodyContent").load("/Home/GetHospitalbyDept/" + id)
+        });
+
+            $("#search").on("click", function () {
+                let name = $("#HospitalTitle").val();
+                $("#bodyContent").load("/Home/GetHospitalbyName/" + name)
+
+            });
+
+
+    </script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+}
